@@ -1,0 +1,58 @@
+<%- include('partials/head.ejs')  %>
+
+<body>
+<%- include('partials/navbar.ejs')  %>
+
+<h1 class="container eachPageDescription text-muted">Cart Details</h1>
+
+<table class="table">
+    <!-- <thead>
+      <tr class="eachRowFromCart">
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead> -->
+    <% if(products){%>
+        <tbody class="d-flex flex-column">
+            <!-- Display all cart details -->
+           <% products.products.map((product)=>{%>
+            <tr class="eachRowFromCart">
+                <td >
+                    <img src="<%= product.image  %>" alt="" class="cartImage">
+                </td>
+                <td><%= product.quantity  %></td>
+                <td><%= product.price*product.quantity  %></td>
+                <td>
+                    <form action="/products/delete/cart" method="post">
+                        <input type="hidden" name="productId" value="<%= product.id  %>"   id="">
+                        <button class="btn">Delete</button>
+                    </form>
+                </td>
+              </tr>
+          <% }) %>
+          <tr class="border border-2 border-light "></tr>
+          <!-- calculation of total price -->
+            <% if(products.totalPrice){%>
+                <tr class="eachRowFromCart mx-5">
+                    <td></td>
+                    <td><h3>TotalPrice:</h3></td>
+                    <td><h3><%= products.totalPrice  %></h3> </td>
+                    <td></td>
+                   </tr>
+         <%   }else{%>
+                   <h4 class="container">There is no items added to the cart!<a href="/">Click here</a></h4>
+        <% } %>
+         
+            
+          </tbody>
+
+           
+   <% } %>
+   
+  </table>
+
+<%- include('partials/footer.ejs')  %>
+
+    

@@ -1,0 +1,87 @@
+body{
+    min-height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+    padding-bottom: 10vh;
+    
+
+}
+.navbar{
+    height: 10vh;
+}
+.eachPageDescription{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* home page */
+.products{
+    display: flex;
+    padding: 10px 16px;
+    margin: 16px 30px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap:wrap;
+    /* min-height: calc(100vh-10vh-10vh); */
+
+}
+
+.individualProduct{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:300px ;
+    margin: 10px 16px;
+    border: 1px solid #eee;
+    box-shadow: 1px 1px 1px 1px #eee;
+    position: relative;
+
+}
+
+.productImage{
+    width: 100%;
+}
+.productImage:hover{
+    opacity: 0.5;
+}
+h3{
+    margin-top: 5px;
+}
+.description{
+     position: absolute;
+     top: 180px;
+     display: none;
+}
+.btn{
+width: 200px;
+border: 1px solid black;
+margin-bottom: 16px;
+}
+
+.btn:hover{
+  background-color: black;
+  color: white;
+}
+/* styling cart */
+
+.eachRowFromCart{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.cartImage{
+    width: 100px;
+}
+
+.footer{
+    position: absolute;
+    height: 10vh;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer p{
+    margin: 25px auto;
+   font-size: 20px;
+}

@@ -1,0 +1,47 @@
+<%- include('partials/head.ejs')  %>
+<body>
+    <%- include('partials/navbar.ejs')  %>
+
+    <!-- checking admin or homepage -->
+    <h1 class=" container eachPageDescription text-muted"><%= admin?'Admin List':'Product List'   %></h1>
+    <% if(products.length){%>
+      <div class="products">
+
+     
+        <% products.map((product)=>{%>
+             <div class=" individualProduct">
+              <div>
+                <img src="<%= product.image %>" alt="" class="productImage">
+                <p class="description"><%= product.description  %></p>
+              </div>
+                  <h3><%= product.title  %></h3>
+                  <p>Rs<%= product.price  %></p>
+                  <!-- updating product details if it is home page -->
+                  <% if(admin){%>
+                         <form action="/products/update" method="post">
+                   <input type="hidden" value="<%= product.productId  %>" name="productId" id="">
+                   <div>
+                  <button class="btn">Edit</button>   
+                   </div>
+                  </form>
+                  <!-- Deleting product form -->
+                     <form action="/products/delete" method="post">
+                   <input type="hidden" value="<%= product.productId  %>" name="productId" id="">
+                  <button class="btn">Delete</button>
+                     </form>
+
+                 <% }else{%>
+                    <form action="/cart" method="post">
+                   <input type="hidden" value="<%= product.productId  %>" name="productId" id="">
+                  <button class="btn">Add to Cart</button>
+                  </form>
+                 <% }  %>
+                  
+                
+             </div>
+      <%  }) %>
+    </div>
+   <% }else{  %>
+            <div>No Products available</div>
+  <% } %>
+<%- include('partials/footer.ejs')  %>
